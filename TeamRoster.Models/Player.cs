@@ -4,7 +4,11 @@ using System.Text;
 
 namespace TeamRoster.Models
 {
-    class Player
+    public class Player
     {
+        public int Player_Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateAdded { get; set; }
     }
 }

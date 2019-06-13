@@ -4,7 +4,10 @@ using System.Text;
 
 namespace TeamRoster.Models
 {
-    class Team
+    public class Team
     {
+        public int Team_Id { get; set; }
+
+        public string TeamName { get; set; }
     }
 }
