@@ -129,7 +129,13 @@ services becomes things I do *WITH* the models.
 Also Services does not have a one to one relationship
 with models. So I can have extra services that don't
 have correspondiong models. So I'm creating the matching 
-services like this:
+services with methods like `Add()`, `Edit()`, `Save()`, 
+`Delete()`. Since we're using JSON data I need to add 
+the nuget package that helps us deal with json data, 
+Newtonsoft's JSON.Net. In the package manger console I 
+select the service project and type: 
+`Install-Package Newtonsoft.Json`
 
+![Nuget Newtonsoft](nuget_newtonsoft.bmp)
 
 
