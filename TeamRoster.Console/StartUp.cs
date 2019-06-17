@@ -2,11 +2,11 @@
 
 namespace TeamRoster.App
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            new TeamRosterProgram().Run();
         }
     }
 }

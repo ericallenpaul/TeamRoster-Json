@@ -129,7 +129,7 @@ services becomes things I do *WITH* the models.
 Also Services does not have a one to one relationship
 with models. So I can have extra services that don't
 have correspondiong models. So I'm creating the matching 
-services with methods like `Add()`, `Edit()`, `Save()`, 
+services with methods like `GetAll`, `Add()`, `Edit()`, `Save()`, 
 `Delete()`. Since we're using JSON data I need to add 
 the nuget package that helps us deal with json data, 
 Newtonsoft's JSON.Net. In the package manger console I 
@@ -137,5 +137,57 @@ select the service project and type:
 `Install-Package Newtonsoft.Json`
 
 ![Nuget Newtonsoft](nuget_newtonsoft.bmp)
+
+We will be using the JSON.Net library to **serialize** and 
+**deserialize** the data for the applications. Those are really
+just fancy words for converting our objects to text and back.
+Serializng our object list looks something like this:
+
+```
+//create a list of players
+List<Player> players = new List<Player>();
+
+//turn the list of playes into a json formatted string
+string jsonData = JsonConvert.SerializeObject(players);
+
+//now we can save the string to a file
+File.WriteAllText(@"C:\data\MyPlayerData.json", text);
+```
+
+To get our data back into the object list we just reverse the process:
+
+```
+//read the file
+string jsonData = File.ReadAllText(_DataFile);
+
+//deserialize the file back into a list
+List<Player> players = JsonConvert.DeserializeObject<List<Player>>(jsonData);
+```
+
+So now I have my objects (Models) and the services to create, add and delete them. Now it's
+time to work on the user interface.
+A console application has very limited options when it comes to a user interface.
+Most applications use a menu and prompts, so the next thing to do is build a menu.
+Instaed of coding a menu from scratch we'll use a nuget package and leverage someone
+else's work to make our job easier. 
+
+> Never forget anytime you code something new
+to go look and see if anyone has done it beore or has spome code examples that will
+make your job easier.
+
+We'll be using [EasyConsole](https://github.com/splttingatms/EasyConsole) to create our menus.
+EasyConsole allows us to organize our menus into classes, which will make the menus
+easier to manage and change. In our TeamRoster.App we'll add a class (right-click, Add->Class) 
+called `TeamRosterProgram`
+
+
+ MainMenu and according to the EasyConsole example program it 
+will inhereit from `MenuPage`.
+
+
+
+
+
+
 
 
