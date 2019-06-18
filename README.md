@@ -233,8 +233,11 @@ so Team can be added like player.
 Think about the app, is the functionality complete? We have Add and Delete
 but shouldn't we also have Edit?
 How hard would it be to add a new function like Edit?
+
 How hard would it be to add a new class like "Coach"?
-What if the time the various messages are on screen need to be longer than a second?
+
+What if the time the various messages are on screen needs to be longer than a second?
+
 What if the time the message is on the screen needs to wait until a user 
 is ready to move on to the next screen.
 
