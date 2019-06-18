@@ -64,7 +64,7 @@ directory with our EXE. Now we need to click on each file and change it's output
 
 Since these are going to act as my database I am selecting the 
 "Copy if newer" option. This will now cause the Data folder to be included 
-alnongside our exe when we run or publish the app.
+alongside our exe when we run or publish the app.
 
 Now I'll add my classes to my models project. Again this is 
 a right-click but this time on the project 
@@ -131,7 +131,7 @@ services becomes things I do *WITH* the models.
 Also Services does not have a one to one relationship
 with models. So I can have extra services that don't
 have correspondiong models. So I'm creating the matching 
-services with methods like `GetAll`, `Add()`, `Edit()`, `Save()`, 
+services with methods like `GetAll()`, `Add()`, `Edit()`, `Save()`, 
 `Delete()`. Since we're using JSON data I need to add 
 the nuget package that helps us deal with json data, 
 Newtonsoft's JSON.Net. In the package manger console I 
@@ -237,6 +237,9 @@ How hard would it be to add a new class like "Coach"?
 What if the time the various messages are on screen need to be longer than a second?
 What if the time the message is on the screen needs to wait until a user 
 is ready to move on to the next screen.
+
+Think about the UI, Is there a way to enhance the interface?
+What about colors?
 
 
 
