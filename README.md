@@ -215,8 +215,28 @@ This method is also used to return the number hat the user selected.
 It has a return type of `int`.
 
 
+> more instructions to come
 
 
+
+
+### Code Challenge 1
+There seem to be some issues when entering a player's age. Make age a 
+required field and make sure it contains a value other than 0.
+
+### Code Challenge 2
+The code for the Team menu is incomplete. Finish the app 
+so Team can be added like player.
+
+
+### Bonus Challenge
+Think about the app, is the functionality complete? We have Add and Delete
+but shouldn't we also have Edit?
+How hard would it be to add a new function like Edit?
+How hard would it be to add a new class like "Coach"?
+What if the time the various messages are on screen need to be longer than a second?
+What if the time the message is on the screen needs to wait until a user 
+is ready to move on to the next screen.
 
 
 
