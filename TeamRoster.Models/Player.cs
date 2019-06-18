@@ -9,6 +9,8 @@ namespace TeamRoster.Models
         public int Player_Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Team { get; set; }
+        public int Age { get; set; }
         public DateTime DateAdded { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace TeamRoster.Services
                 string currentJsonFileName = this.GetType().Name.Replace("Service", "") + ".json";
 
                 //establish the path to the data file
-                _DataFile = $@"{DataDirectory}\{currentJsonFileName}";
+                _DataFile = $@"{DataDirectory}{currentJsonFileName}";
             }
             catch (Exception ex)
             {
@@ -43,9 +43,9 @@ namespace TeamRoster.Services
             }
         }
 
-        public IList<Player> GetAll()
+        public List<Player> GetAll()
         {
-            IList<Player> returnValue = new List<Player>();
+            List<Player> returnValue = new List<Player>();
 
             try
             {
@@ -55,8 +55,11 @@ namespace TeamRoster.Services
                     //read the file
                     string jsonData = File.ReadAllText(_DataFile);
 
-                    //deserialize the file back into a list
-                    returnValue = JsonConvert.DeserializeObject<List<Player>>(jsonData);
+                    if (!String.IsNullOrEmpty(jsonData))
+                    {
+                        //deserialize the file back into a list
+                        returnValue = JsonConvert.DeserializeObject<List<Player>>(jsonData);
+                    }
                 }
                 else
                 {
@@ -92,11 +95,11 @@ namespace TeamRoster.Services
             return player;
         }
 
-        public IList<Player> Delete(Player player, List<Player> players)
+        public List<Player> Delete(Player player, List<Player> players)
         {
             try
             {
-                players.RemoveAll(x => x.Player_Id == player.Player_Id);
+                players.Remove(player);
                 Save(players);
             }
             catch (Exception ex)
@@ -114,6 +117,11 @@ namespace TeamRoster.Services
             try
             {
                 string jsonData = JsonConvert.SerializeObject(players);
+
+                if (!string.IsNullOrEmpty(jsonData))
+                {
+                    File.WriteAllText(_DataFile, jsonData);
+                }
             }
             catch (Exception ex)
             {
@@ -135,7 +143,9 @@ namespace TeamRoster.Services
                     var player = players.OrderByDescending(u => u.Player_Id).FirstOrDefault();
 
                     //get that players ID and add 1
-                    returnValue = player.Player_Id++;
+                    int id = player.Player_Id;
+                    id++;
+                    returnValue = id;
                 }
             }
             catch (Exception ex)

@@ -90,6 +90,8 @@ namespace TeamRoster.Models
         public int Player_Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Team { get; set; }
+        public int Age { get; set; }
         public DateTime DateAdded { get; set; } 
     }
 }
@@ -153,6 +155,18 @@ string jsonData = JsonConvert.SerializeObject(players);
 //now we can save the string to a file
 File.WriteAllText(@"C:\data\MyPlayerData.json", text);
 ```
+The "serialized" list might looks something like this:
+
+```
+[{
+	"Player_Id": 1,
+	"FirstName": "Luke",
+	"LastName": "Skywalker",
+	"Team": Rebels,
+	"Age": 34,
+	"DateAdded": "2019-06-18T14:52:32.9260119-04:00"
+}]
+```
 
 To get our data back into the object list we just reverse the process:
 
@@ -168,21 +182,42 @@ So now I have my objects (Models) and the services to create, add and delete the
 time to work on the user interface.
 A console application has very limited options when it comes to a user interface.
 Most applications use a menu and prompts, so the next thing to do is build a menu.
-Instaed of coding a menu from scratch we'll use a nuget package and leverage someone
-else's work to make our job easier. 
+I'm going to organize my menu code by putting them all in the same folder. I created a 
+folder called `Menus`. To that folder I added 3 class files:
 
-> Never forget anytime you code something new
-to go look and see if anyone has done it beore or has spome code examples that will
-make your job easier.
+- MainMenu.cs
+- PlayerMenu.cs
+- TeamMenu.cs
 
-We'll be using [EasyConsole](https://github.com/splttingatms/EasyConsole) to create our menus.
-EasyConsole allows us to organize our menus into classes, which will make the menus
-easier to manage and change. In our TeamRoster.App we'll add a class (right-click, Add->Class) 
-called `TeamRosterProgram`
+Each menu class will contain a `Run()` and `DisplayMenu()` method. To display the menu is
+pretty straight forward. I just need a bunch of `Console.WriteLine()` methods
+and the text that I want to appear on screen. So the `DisplayMenu()` method for the
+main menu looks something like:
+
+```
+public static int DisplayMenu()
+{
+    Console.Clear();
+    Console.WriteLine();
+    Console.WriteLine("Team Roster Manager");
+    Console.WriteLine("--------------------");
+    Console.WriteLine();
+    Console.WriteLine(" 1. Manage Teams");
+    Console.WriteLine(" 2. Manage Players");
+    Console.WriteLine(" 3. Exit");
+    Console.WriteLine();
+    Console.Write("Choice: ");
+    var result = Console.ReadLine();
+    return Convert.ToInt32(result);
+}
+```
+This method is also used to return the number hat the user selected.
+It has a return type of `int`.
 
 
- MainMenu and according to the EasyConsole example program it 
-will inhereit from `MenuPage`.
+
+
+
 
 
 

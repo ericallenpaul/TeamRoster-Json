@@ -1,17 +1,19 @@
-﻿using EasyConsole;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace TeamRoster.App.Menus
 {
-    class TeamMenu : MenuPage
+    public class TeamMenu
     {
-        public TeamMenu(Program program) : base("Team Menu", program,
-            new Option("Add Team", () => program.NavigateTo<TeamMenu>()),
-            new Option("Manage Players", () => program.NavigateTo<PlayerMenu>()))
+        public static int DisplayMenu()
         {
+            throw new NotImplementedException("This still needs to be done");
         }
 
+        public static void Run()
+        {
+            throw new NotImplementedException("This still needs to be done");
+        }
     }
 }
