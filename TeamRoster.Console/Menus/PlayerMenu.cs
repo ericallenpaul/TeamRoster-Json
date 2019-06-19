@@ -19,9 +19,11 @@ namespace TeamRoster.App.Menus
 
         public static int DisplayMenu()
         {
+            //get the data directory and json file
             _dataDir = $@"{Program.DataDirectory}Data\";
             _playerService = new PlayerService(_dataDir);
 
+            //print the menu to screen
             Console.Clear();
             Console.WriteLine("Player Manager");
             Console.WriteLine("--------------------");
@@ -32,18 +34,25 @@ namespace TeamRoster.App.Menus
             Console.WriteLine(" 4. Return to Main Menu");
             Console.WriteLine();
             Console.Write("Choice: ");
+
+            //capture the result
             var result = Console.ReadLine();
             return Convert.ToInt32(result);
         }
 
         public static void Run()
         {
+            //create a var to hold the user's selection
             int userInput = 0;
+
+            //continue to loop until a valid
+            //number is chosen
             do
             {
                 //get the selection
                 userInput = DisplayMenu();
 
+                //perform an action based on a selection
                 switch (userInput)
                 {
                     case 1:

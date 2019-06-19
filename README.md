@@ -213,11 +213,48 @@ public static int DisplayMenu()
 ```
 This method is also used to return the number hat the user selected.
 It has a return type of `int`.
+The `Run()` method contains the switch statement which determines 
+what happens based on the user's chosen menu item.
 
+```
+//create a var to hold the user's selection
+int userInput = 0;
 
-> more instructions to come
+//continue to loop until a valid
+//number is chosen
+do
+{
+    //get the selection
+    userInput = DisplayMenu();
 
+    //perform an action based on a selection
+    switch (userInput)
+    {
+        case 1:
+            GetAll();
+            break;
+        case 2:
+            Add();
+            break;
+        case 3:
+            Delete();
+            break;
+        case 4:
+            MainMenu.Run();
+            break;
+        default:
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine(" Error: Invalid Choice");
+            System.Threading.Thread.Sleep(1000);
+            break;
+    }
 
+} while (userInput != 4);
+```
+
+Now all that's left is to code an action for each menu item.
+You can look at the commented code in the player menu to see how each action works.
 
 
 ### Code Challenge 1
@@ -226,7 +263,7 @@ required field and make sure it contains a value other than 0.
 
 ### Code Challenge 2
 The code for the Team menu is incomplete. Finish the app 
-so Team can be added like player.
+so team can be added like player.
 
 
 ### Bonus Challenge
