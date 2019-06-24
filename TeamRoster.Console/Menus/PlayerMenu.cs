@@ -138,14 +138,28 @@ namespace TeamRoster.App.Menus
             Console.Write("Team: ");
             //read the input from the console as the team name
             player.Team = Console.ReadLine();
+            
+            int age = 0;
+            while (age <= 0)
+            {
+                //prompt the user for the age
+                Console.Write("Age: ");
 
-            //prompt the user for the age
-            Console.Write("Age: ");
-            //parse the string entered from the console
-            //and convert it to an integer.
-            //TryParse will eat any conversion errors
-            int.TryParse(Console.ReadLine(), out var age);
-            player.Age = age;
+                //parse the string entered from the console
+                //and convert it to an integer.
+                //TryParse will eat any conversion errors
+                int.TryParse(Console.ReadLine(), out age);
+
+                if (age <= 0)
+                {
+                    string line1 = "Error: Invalid input.";
+                    string line2 = "Please make sure you enter a number greater than zero";
+                    WriteError(line1, line2);
+                }
+
+                //assign the age
+                player.Age = age;
+            }
             
             //get the current date and time for DateAdded
             player.DateAdded = DateTime.Now;
@@ -156,6 +170,20 @@ namespace TeamRoster.App.Menus
             //give the user feed back--pause for one second on screen
             Console.WriteLine($"Success: Added a new player ID: {player.Player_Id}");
             System.Threading.Thread.Sleep(1000);
+        }
+
+        private static void WriteError(string line1, string line2 = null)
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(line1);
+            if (!string.IsNullOrEmpty(line2))
+            {
+                Console.WriteLine(line2);
+            }
+            
+            Console.WriteLine();
+            Console.ResetColor();
         }
 
         private static void Delete()
