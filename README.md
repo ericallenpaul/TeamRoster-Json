@@ -42,6 +42,15 @@ from it's last and final update from Microsoft.
 
 I added services project the same way.
 
+I added services project the same way.
+I also added references to the other projects
+from the console app (right-click the project
+Add->Reference). Now I can add `using` 
+statements whereever I need them.
+
+![Add Reference](add_reference.bmp)
+
+
 Since I will be "persisting" the 
 data between application launches 
 I need a place to save our data. 
